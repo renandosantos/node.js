@@ -1,7 +1,5 @@
 const http = require("http")
 const fs = require('fs')
-const { console } = require("inspector/promises")
-const { Console } = require("console")
 
 const port = 3000
 
@@ -16,7 +14,10 @@ const server = http.createServer((req, res) => {
         return res.end()
     })
     }else{
-        fs.writeFile("arquivo.txt", name, function(err,data) {
+
+        const nameNewLine = name + '\n'
+
+        fs.appendFile("arquivo.txt", nameNewLine, function(err,data) {
             res.writeHead(302, {
                 location: '/'
             })
