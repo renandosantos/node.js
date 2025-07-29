@@ -3,3 +3,4 @@ const soma = meumodulo.soma
 
 soma(5, 9)
 soma(4, 2)
+soma(1, 4)
