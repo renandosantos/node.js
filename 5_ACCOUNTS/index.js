@@ -1,6 +1,7 @@
 import inquirer from 'inquirer'           // Importa o módulo para entrada de dados no terminal
 import chalk from 'chalk'                 // Importa o módulo para estilizar texto no terminal
 import fs from 'fs'                       // Importa o módulo para manipulação de arquivos
+import { exit } from 'process'
 
 operation()                               // Chama a função principal para iniciar o programa
 
@@ -24,7 +25,16 @@ function operation() {
 
     if (action === 'Criar conta') {       // Se a escolha for "Criar conta"
       createAccount()                     // Chama a função que inicia o processo de criação
-    }
+    }else if(action === 'Depositar'){     // Se a escolha for "Depositar"
+      deposit()
+    }else if(action === 'Consultar Saldo'){     // Se a escolha for "Consultar saldo"
+      consult()
+    }else if(action === 'Sacar'){      // Se a escolha for "Sacar"
+      sacar()
+    }else if(action === 'Sair'){       // Se a escolha for "Sair"
+      console.log(chalk.bgBlue.black('Obrigado por usar o Acoounts'))
+      process.exit()
+    }    
 })
   .catch((err) => console.log(err))       // Mostra erros no terminal se algo der errado
 }
