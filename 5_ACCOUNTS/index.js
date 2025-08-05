@@ -1,7 +1,6 @@
 import inquirer from 'inquirer'           // Importa o módulo para entrada de dados no terminal
 import chalk from 'chalk'                 // Importa o módulo para estilizar texto no terminal
 import fs from 'fs'                       // Importa o módulo para manipulação de arquivos
-import { parse } from 'path'
 
 operation()                               // Chama a função principal para iniciar o programa
 
@@ -141,6 +140,31 @@ function addamount(accountname, amount) {
 )
 }
 
+//função sacar
+function subamount(accountname, amount) {
+  const accountdata = getaccount(accountname)
+  if(!amount) {
+    console.log(chalk.bgRed.black('Ocorreu um erro, tente novamente mais tarde!'))
+    return sacar()
+  }if(parseFloat(amount) <= parseFloat(accountdata.balance)){
+    accountdata.balance = parseFloat(accountdata.balance) - parseFloat(amount) 
+  
+  
+  fs.writeFileSync(
+  `accounts/${accountname}.json`,
+  JSON.stringify(accountdata),
+  function(err) {
+    console.log(err)
+  },
+)
+  console.log(chalk.green(`Saque de R$${amount} foi realizado com sucesso`),
+)
+}else{
+  console.log('Saldo insuficiente!')
+}
+}
+
+
 function getaccount(accountname) {
   const accountJSON = fs.readFileSync(`accounts/${accountname}.json`, {
     encoding: 'utf8',
@@ -150,3 +174,59 @@ function getaccount(accountname) {
   return JSON.parse(accountJSON)
 }
 
+//ver saldo
+function consult() {
+  inquirer.prompt([
+    {
+      name:'accountname',
+      message: 'Qual o nome da sua conta?'
+    }
+  ]).then((answers) => {
+    const accountname = answers["accountname"]
+      if(!checkaccount(accountname)){
+      return consult()
+    }
+
+    const accountdata = getaccount(accountname)
+    console.log(chalk.bgBlue.black(
+      `Olá ${accountname}, o saldo da sua conta é de R$${accountdata.balance}`,
+    ),
+  )
+  operation()
+  }).catch(err => console.log(err))
+}
+
+//sacar
+
+function sacar() {
+
+  inquirer.prompt([                     // Pergunta o nome da conta
+    {
+      name: 'accountname',                 //nome do campo
+      message: 'Qual o nome da sua conta?'   // Mensagem da pergunta
+    }
+  ]).then((answers) => {
+
+    const accountname = answers['accountname']
+    
+    //verificar se a conta existe
+    if(!checkaccount(accountname)){
+      return sacar()
+    }
+    inquirer.prompt([
+    {
+      name: 'amount',
+      message: 'Quanto você deseja sacar?',
+    },
+    ]).then((answers) => {
+
+      const amount = answers['amount']
+
+      //add an amount
+      subamount(accountname, amount)
+      operation()
+    })
+    .catch(err => console.log(err))
+  })
+  .catch(err => console.log(err))
+}
