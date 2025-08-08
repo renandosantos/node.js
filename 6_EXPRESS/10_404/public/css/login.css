@@ -1,0 +1,96 @@
+/* Define variáveis de cores para facilitar a customização */
+        :root {
+            --cor-fundo: #2c2f33;
+            --cor-formulario: #36393f;
+            --cor-borda: #4f545c;
+            --cor-texto: #ffffff;
+            --cor-placeholder: #a0a0a0;
+            --cor-destaque: #7289da;
+            --sombra: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos gerais para a página */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        /* Estilo para o título principal, agora fora do container */
+        h1 {
+            text-align: center;
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* Container do formulário */
+        .form-container {
+            background-color: var(--cor-formulario);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        
+        /* Estilo para os grupos de label e input */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Estilos para os campos de texto e idade */
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--cor-destaque);
+        }
+
+        ::placeholder {
+            color: var(--cor-placeholder);
+        }
+
+        /* Estilo para o botão de cadastrar */
+        input[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--cor-destaque);
+            color: var(--cor-texto);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #677bc4;
+        }
