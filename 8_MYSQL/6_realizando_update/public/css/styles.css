@@ -146,5 +146,9 @@ input[type="submit"]:hover {
     color: #3498db;
     text-decoration: underline;
 }
+.actions {
+    margin-top: 1em;
+    text-align: center;
+}
 
 /* Estilo para o negrito dentro do contêiner */
