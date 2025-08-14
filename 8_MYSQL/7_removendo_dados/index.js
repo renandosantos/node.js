@@ -91,10 +91,22 @@ app.post('/books/updatebook', (req, res) =>{
     const pageqty = req.body.pageqty
     const sql = `UPDATE books SET tittle = '${tittle}', pageqty = '${pageqty}' WHERE id = ${id}`
     con.query(sql, function(err){
-         if(err) {
+        if(err) {
         console.log(err)
         return
     }
+        res.redirect('/books')
+    })
+})
+
+app.post('/books/remove/:id', (req, res) => {
+    const id = req.params.id
+    const sql = `DELETE FROM books WHERE id = ${id}`
+    con.query(sql, function(err) {
+        if(err) {
+        console.log(err)
+        return
+        }
         res.redirect('/books')
     })
 })
