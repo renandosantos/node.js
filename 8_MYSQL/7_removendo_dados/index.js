@@ -109,7 +109,7 @@ app.post('/books/remove/:id', (req, res) => {
         }
         res.redirect('/books')
     })
- })
+})
 
 const con = mysql.createConnection({
     host: 'localhost',
