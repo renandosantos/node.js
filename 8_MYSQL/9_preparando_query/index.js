@@ -26,9 +26,9 @@ app.post('/books/insertbook', (req, res) => { // Define a rota POST para inserir
     const tittle = req.body.tittle // Pega o título do corpo da requisição
     const pageqty = req.body.pageqty // Pega a quantidade de páginas do corpo da requisição
 
-    const sql = `INSERT INTO books (tittle, pageqty) VALUES('${tittle}', '${pageqty}')` // Cria a query SQL
+    const sql = 'INSERT INTO books (tittle, pageqty) VALUES(?, ?)' // Cria a query SQL
 
-    pool.query(sql, function(err){ // Executa a query
+    pool.query(sql, [tittle, pageqty], function(err){ // Executa a query
         if(err) { // Se houver erro
         console.log(err) // Exibe o erro
         return // Retorna para parar a execução
@@ -57,9 +57,9 @@ app.get('/books', (req, res) =>{ // Define a rota para listar os livros
 app.get('/books/:id', (req, res) => { // Define a rota para um livro específico
     const id = req.params.id // Pega o ID da URL
 
-    const sql = `SELECT * FROM books where id = ${id}` // Query para buscar o livro pelo ID
+    const sql = 'SELECT * FROM books where id = ?' // Query para buscar o livro pelo ID
 
-    pool.query(sql, function(err, data) { // Executa a query
+    pool.query(sql, [id], function(err, data) { // Executa a query
         if(err) { // Se houver erro
         console.log(err) // Exibe o erro
         return // Retorna para parar a execução
@@ -72,9 +72,9 @@ app.get('/books/:id', (req, res) => { // Define a rota para um livro específico
 app.get('/books/edit/:id', (req, res) => { // Define a rota para editar um livro
     const id = req.params.id // Pega o ID da URL
 
-    const sql = `SELECT *FROM books where id = ${id}` // Query para buscar o livro a ser editado
+    const sql = 'SELECT *FROM books where id = ?' // Query para buscar o livro a ser editado
 
-    pool.query(sql, function(err, data) { // Executa a query
+    pool.query(sql, [id], function(err, data) { // Executa a query
         if(err) { // Se houver erro
         console.log(err) // Exibe o erro
         return // Retorna para parar a execução
@@ -88,8 +88,8 @@ app.post('/books/updatebook', (req, res) =>{ // Define a rota POST para atualiza
     const id = req.body.id // Pega o ID do corpo da requisição
     const tittle = req.body.tittle // Pega o novo título
     const pageqty = req.body.pageqty // Pega a nova quantidade de páginas
-    const sql = `UPDATE books SET tittle = '${tittle}', pageqty = '${pageqty}' WHERE id = ${id}` // Query de atualização
-    pool.query(sql, function(err){ // Executa a query
+    const sql = 'UPDATE books SET tittle = ?, pageqty = ? WHERE id = ?' // Query de atualização
+    pool.query(sql, [tittle, pageqty, id], function(err){ // Executa a query
         if(err) { // Se houver erro
         console.log(err) // Exibe o erro
         return // Retorna para parar a execução
@@ -100,8 +100,8 @@ app.post('/books/updatebook', (req, res) =>{ // Define a rota POST para atualiza
 
 app.post('/books/remove/:id', (req, res) => { // Define a rota POST para remover um livro
     const id = req.params.id // Pega o ID da URL
-    const sql = `DELETE FROM books WHERE id = ${id}` // Query para deletar o livro
-    pool.query(sql, function(err) { // Executa a query
+    const sql = 'DELETE FROM books WHERE id = ?' // Query para deletar o livro
+    pool.query(sql, [id], function(err) { // Executa a query
         if(err) { // Se houver erro
         console.log(err) // Exibe o erro
         return // Retorna para parar a execução
