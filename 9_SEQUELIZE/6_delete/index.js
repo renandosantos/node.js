@@ -49,6 +49,14 @@ app.get('/users/:id', async (req, res) => {
     res.render('userview', { User })
 })
 
+app.post('/users/delete/:id', async (req, res) => {
+    const id = req.params.id
+
+    await user.destroy({ where: { id: id } })
+
+    res.redirect('/')
+})
+
 app.get('/', async (req, res) => {
     
     const users = await user.findAll({ raw: true })
