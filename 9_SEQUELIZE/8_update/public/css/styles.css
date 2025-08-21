@@ -1,0 +1,191 @@
+* {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Adiciona cores base para o tema escuro */
+    background-color: #121212; /* Fundo principal escuro */
+    color: #e0e0e0; /* Cor de texto principal clara */
+}
+
+/* --- BARRA DE NAVEGAÇÃO --- */
+#navbar {
+    border-bottom: 1px solid #333; /* Borda mais escura */
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: #1e1e1e; /* Fundo da navbar um pouco mais claro */
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+    background-color: inherit; /* Herda a cor da navbar */
+}
+
+#navbar ul li {
+    margin-left: 1em;
+    background-color: inherit;
+}
+
+/* Adiciona cor ao link da navbar */
+#navbar a {
+    color: #bb86fc; /* Cor de destaque roxa, comum em temas dark */
+    text-decoration: none;
+}
+
+/* --- TÍTULOS E FORMULÁRIOS --- */
+h1 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #ffffff; /* Título principal branco para mais destaque */
+}
+
+.form {
+    width: 450px;
+    margin: 0 auto;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+}
+
+.form-checkbox {
+    flex-direction: row;
+    align-items: center; /* Melhora o alinhamento */
+}
+
+.form-checkbox input {
+    margin-right: 10px;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
+
+/* Estilo padrão do input */
+.form-control input {
+    padding: 8px;
+    background-color: #333333; /* Fundo um pouco mais claro para destacar */
+    border: 1px solid #888; /* Borda mais clara e visível */
+    color: #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Estilo do input QUANDO estiver selecionado (em foco) */
+.form-control input:focus {
+    outline: none; /* Remove a borda azul padrão do navegador */
+    border-color: #bb86fc; /* Borda roxa para indicar que o campo está ativo */
+}
+
+.btn-submit {
+    background-color: #28a745; /* Verde */
+    color: #ffffff; /* Texto branco */
+    font-weight: bold;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #218838; /* Verde mais escuro ao passar o mouse */
+}
+
+
+/* --- CONTAINERS E ITENS --- */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.container .item {
+    border: 1px solid #333; /* Borda do item mais escura */
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1 1 29%;
+    max-width: 29%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #1e1e1e; /* Fundo do card */
+}
+
+.container .item h2,
+.container .item p {
+    margin-bottom: 0.8em;
+    background-color: inherit; /* Herda a cor do card */
+}
+
+.container .item h2 {
+    color: #bb86fc;
+}
+
+/* --- BOTÕES DE AÇÕES --- */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    background-color: inherit;
+}
+
+.actions a,
+.actions input {
+    border: 1px solid #555;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #333; /* Fundo do botão mais escuro */
+    padding: 5px;
+    font-size: 15px;
+    color: #e0e0e0; /* Texto do botão claro */
+    cursor: pointer;
+}
+
+/* Cores de destaque para botões específicos */
+.actions .details-btn {
+    border-color: #81d4fa;
+    color: #81d4fa;
+}
+
+.actions .delete-btn {
+    border-color: #f28b82;
+    color: #f28b82;
+}
+
+/* --- SEÇÃO DE ENDEREÇOS --- */
+.address-container {
+    max-width: 1000px;
+    margin: 1em auto;
+    padding-top: 1em;
+    border-top: 1px solid #333; /* Borda mais escura */
+}
+
+.address-container h2 {
+    margin-bottom: 1em;
+}
+
+.address-container form {
+    width: 300px;
+}
+
+.address-list {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid #333;
+    padding-bottom: 200px;
+}
+
+.address-list div {
+    display: flex;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #333;
+}
+
+.address-list form {
+    margin-left: 1em;
+}
