@@ -38,6 +38,9 @@ h1 {
     margin-bottom: 1em;
     color: #ffffff; /* Título principal branco para mais destaque */
 }
+h2 {
+    text-align: center;
+}
 
 .form {
     width: 450px;
@@ -189,3 +192,6 @@ h1 {
 .address-list form {
     margin-left: 1em;
 }
+
+
+

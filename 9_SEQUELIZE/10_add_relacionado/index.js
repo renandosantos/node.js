@@ -90,6 +90,25 @@ app.post('/users/update', async (req, res) => {
     res.redirect('/')
 })
 
+app.post('/address/create', async (req, res) => {
+    
+    const userId = req.body.userId
+    const street = req.body.street
+    const number = req.body.number
+    const city = req.body.city
+
+    const Address = {
+        userId,
+        street,
+        number,
+        city,
+    }
+
+    await address.create(Address)
+
+    res.redirect(`/users/edit/${userId}`)
+})
+
 app.get('/', async (req, res) => {
     
     const users = await user.findAll({ raw: true })

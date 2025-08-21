@@ -10,7 +10,7 @@ const address = db.define('address', {
         type: DataTypes.STRING,
         required: true
     },
-    Number: {
+    number: {
         type: DataTypes.STRING,
         required: true
     },
