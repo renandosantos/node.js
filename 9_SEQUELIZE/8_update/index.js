@@ -4,7 +4,6 @@ const conn = require('./db/conn')
 const port = 3000 
 
 const user = require('./models/user')
-const { FORCE } = require('sequelize/lib/index-hints')
 
 const app = express() 
 

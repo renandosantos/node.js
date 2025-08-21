@@ -4,7 +4,7 @@ const conn = require('./db/conn')
 const port = 3000 
 
 const user = require('./models/user')
-const { FORCE } = require('sequelize/lib/index-hints')
+const address = require('./models/address')
 
 const app = express() 
 
@@ -101,8 +101,8 @@ app.get('/', async (req, res) => {
 
 
 conn
-.sync()
-//.sync({force: true}) apagar tudo do banco
+//.sync()
+.sync({force: true}) //apagar tudo do banco
 .then(() => {
     app.listen(3000, ()=> { 
     console.log(`APP rodando na porta ${port}`) 
