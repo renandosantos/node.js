@@ -169,17 +169,21 @@ h2 {
 
 .address-container h2 {
     margin-bottom: 1em;
+    
 }
 
 .address-container form {
     width: 300px;
+    margin: 0 auto;
 }
+
 
 .address-list {
     margin-top: 1em;
     padding-top: 1em;
     border-top: 1px solid #333;
     padding-bottom: 200px;
+    text-align: center;
 }
 
 .address-list div {
