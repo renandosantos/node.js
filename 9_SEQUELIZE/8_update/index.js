@@ -65,6 +65,30 @@ app.get('/users/edit/:id', async (req, res) => {
     res.render('useredit', { User })
 })
 
+app.post('/users/update', async (req, res) => {
+    const id = req.body.id
+    const name = req.body.name
+    const occupation = req.body.occupation
+    let newsletter = req.body.newsletter
+
+    if(newsletter === 'on' ){
+        newsletter = true
+    }else{
+        newsletter = false
+    }
+
+    const userdata = {
+        id,
+        name,
+        occupation,
+        newsletter
+    }
+
+    await user.update(userdata, { where: { id: id } })
+
+    res.redirect('/')
+})
+
 app.get('/', async (req, res) => {
     
     const users = await user.findAll({ raw: true })

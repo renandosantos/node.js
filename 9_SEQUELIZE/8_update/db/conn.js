@@ -2,7 +2,9 @@ const { Sequelize } = require('sequelize')
 const { dbPassword } = require('../config')
 const sequelize = new Sequelize('nodesequelize', 'root', dbPassword, {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    timezone: '-03:00', 
+    dialectOptions: {timezone: '-03:00'}
 
 })
 
