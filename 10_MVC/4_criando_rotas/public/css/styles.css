@@ -117,3 +117,53 @@ form input[type='submit'] {
     text-decoration: line-through;
     color: #ccc;
 }
+
+
+
+/* ================================== */
+/* MODO ESCURO             */
+/* ================================== */
+
+/* Adicione a classe "dark-mode" na tag <body> para ativar */
+
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+/* --- Formulários --- */
+
+body.dark-mode .form-control input,
+body.dark-mode .form-control textarea {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #f0f0f0; /* Cor do texto ao digitar */
+}
+
+/* --- Lista de Tarefas --- */
+
+body.dark-mode .task-list li {
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .task-list .title:hover {
+    color: #fff; /* Título fica branco no hover, em vez de escuro */
+}
+
+/* --- Ícones de Ações --- */
+
+body.dark-mode .actions i {
+    color: #ccc; /* Ícones ficam cinza claro */
+}
+
+/* Ícone mantém a cor de destaque vermelha no hover, o que já funciona bem */
+body.dark-mode .actions i:hover {
+    color: #db4c3f;
+}
+
+/* --- Tarefa Concluída --- */
+
+body.dark-mode .title.done {
+    color: #888; /* Cor mais escura para texto riscado */
+    text-decoration-color: #888; /* Cor do risco */
+}

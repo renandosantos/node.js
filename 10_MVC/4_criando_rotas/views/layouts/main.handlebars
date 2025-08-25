@@ -8,10 +8,46 @@
 </head>
 <body>
     <nav id="navbar">
+        
         <ul>
-            <li><a href="/">Ver todos</a></li>
+            <li><a href="/tasks">Ver todos</a></li>
+            <li><a href="/tasks/add">Criar</a></li>
         </ul>
+        <button id="theme-toggle-btn">🌙</button>
     </nav>
-    {{{body}}}
+    <div class="container">
+        {{{body}}}
+    </div>
+
+    
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const body = document.querySelector('body');
+
+        // Função para alternar o tema e salvar a preferência
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+
+            // Verifica se o modo escuro está ativo para salvar no localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '☀️'; // Troca o ícone para sol
+            } else {
+                localStorage.removeItem('theme'); // Ou localStorage.setItem('theme', 'light');
+                themeToggleBtn.textContent = '🌙'; // Troca o ícone para lua
+            }
+        }
+
+        // Verifica a preferência do usuário assim que a página carrega
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggleBtn.textContent = '☀️'; // Garante que o ícone certo seja exibido
+        }
+
+        // Adiciona o evento de clique ao botão
+        themeToggleBtn.addEventListener('click', toggleTheme);
+    </script>
+    
 </body>
 </html>
