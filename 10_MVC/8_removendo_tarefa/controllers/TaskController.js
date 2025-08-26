@@ -17,6 +17,14 @@ static async createTaskSave(req, res) {
     res.redirect('/tasks')
 }
 
+static async removeTask (req, res) {
+    const id = req.body.id
+
+    await Task.destroy({where: {id: id}})
+
+    res.redirect('/tasks')
+}
+
 
     static async showTasks(req, res) {
 const tasks = await Task.findAll({raw: true})
